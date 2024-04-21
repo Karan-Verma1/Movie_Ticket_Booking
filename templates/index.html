@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div id="booking">
+        
+        <form action="{{ url_for('booking') }}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="movie">Select Movie:</label>
+            <select name="movie" id="movie">
+                {% for movie in movie_dict %}
+                <option value="{{ movie }}">{{ movie }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="seat">Select Seat:</label>
+            <select name="seat" id="seat">
+                <option value="Front Gold">Front Gold</option>
+                <br>
+                <option value="Standard">Standard</option>
+                <br>
+                <option value="Gold">Gold</option>
+            </select>
+            <br>
+            <label for="time">Choose Time Slot:</label>
+            <select name="time" id="time">
+                <option value="morning">Morning Slot (10:00 AM)</option>
+                <option value="evening">Evening Slot (7:00 PM)</option>
+            </select>
+            <br>
+
+            <input type="submit" value="Book Ticket">
+        </form>
+
+
+        <div class="marquee">
+            <marquee width="100%" direction="down" height="100%">
+            <img src="{{ url_for('static', filename='movie1.jpg') }}" alt="Movie 1">
+            <img src="{{ url_for('static', filename='movie2.jpg') }}" alt="Movie 2">
+            <img src="{{ url_for('static', filename='movie3.jpg') }}" alt="Movie 3">
+            </marquee>
+        </div>
+    </div>
+
+{% endblock %}
